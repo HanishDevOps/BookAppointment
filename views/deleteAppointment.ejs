@@ -1,0 +1,268 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 40px;
+        }
+
+        @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .bgimage {
+            background-image: url("https://images.pexels.com/photos/6502043/pexels-photo-6502043.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 600px;
+            position: relative;
+            /* opacity: 0.5; */
+        }
+
+        body {
+            /* background-color: #e4f4ff; */
+            display: inline;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+
+        .header {
+            color: #1d6da3;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 18%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+        }
+
+        nav ul {
+            display: flex;
+            flex-flow: nowrap;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            transition: .5s;
+            list-style-type: none;
+        }
+
+        ul li a {
+            padding: 10px 20px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #262625;
+            font-weight: bold;
+            transition: .5s;
+        }
+
+        ul li a:hover {
+            background: #000;
+            color: #fff;
+            transition: .5s
+        }
+
+        .menu-trigger {
+            display: none;
+            margin-right: 1.5em;
+            background: #D56287;
+            color: #fff;
+            padding: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        @media screen and (max-width:816px) {
+
+            .menu-trigger {
+                display: block;
+            }
+
+            header {
+                display: flex;
+                align-items: flex-start;
+                height: 65%;
+
+
+            }
+
+            nav ul {
+                display: block;
+
+
+            }
+
+            ul li {
+                width: 50vh;
+
+            }
+
+            ul li a {
+                display: block;
+                /* text-align: center; */
+                color: #ffff;
+                background: rgba(0, 0, 0, .5);
+
+            }
+
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #1d6da3;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <header>
+            <div>
+                <h2>QUICK DENTAL CLINIC</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/home/<%= loginResult%>">HOME</a></li>
+                    <li><a href="/updateProfile/<%= loginResult%>">UPDATE PROFILE</a></li>
+                    <li><a href="/aboutUs/<%= loginResult%>">ABOUT US</a></li>
+                    <li><a href="/login">LOG OUT</a></li>
+                </ul>
+            </nav>
+
+        </header>
+    </section>
+    <div class="bgimage">
+        <div>
+
+            <div class="container">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Cancel Appointment</div>
+                    <div class="panel-body">
+                        <form id="myForm" name="myForm" action="/deleteAppointment" method="POST">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">First Name</label>
+                                        <input type="text" class="form-control" name="fname" id="fname"
+                                            value='<%=updateAppointmentResult.fname%>' readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Last Name</label>
+                                        <input type="text" class="form-control" name="lname" id="lname"
+                                            value='<%=updateAppointmentResult.lname%>' readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Email</label>
+                                        <input type="text" class="form-control" name="email" id="email"
+                                            value='<%=updateAppointmentResult.email%>' readonly>
+                                    </div>
+                                </div>
+                                <div class='col-md-6'>
+                                    <div class="form-group">
+                                        <label class="control-label">Appointment Time</label>
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input type='text' class="form-control" name="time"
+                                                value='<%=updateAppointmentResult.time%>' readonly />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Doctor</label>
+                                        <select class="form-control" name="doctorName" id="doctor" disabled>
+                                            <option>
+                                                <%=updateAppointmentResult.doctorName%>
+                                            </option>
+                                            <option value="Dr. Manish">Dr. Manish</option>
+                                            <option value="Dr. Vijay">Dr. Vijay</option>
+                                            <option value="Dr. Steven">Dr. Steven</option>
+                                            <option value="Dr. Mary">Dr. Mary</option>
+                                            <option value="Dr. Ramesh">Dr. Ramesh</option>
+                                            <option value="Dr. Khan">Dr. Khan</option>
+                                            <option value="Dr. Karan">Dr. Karan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <!-- <label class="control-label">Email</label> -->
+                                        <input type="hidden" class="form-control" name="loginId" id="loginId"
+                                            value='<%=loginResult%>'>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Cancel the Appointment">
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+            <script>
+
+                $(function () {
+                    $('#datetimepicker1').datetimepicker();
+                });
+                var formatted = $("#datetimepicker1").val
+                function submitDate() {
+                    console.log($("#datetimepicker1").find("input").val())
+
+                }
+            </script>
+
+
+            <div class="footer">
+                <p>Copyright @ 2021 Quick Dental Clinic.All rights reserved.</p>
+            </div>
+            <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+   crossorigin="anonymous"></script> -->
+
+
+</body>
+
+</html>
